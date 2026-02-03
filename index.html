@@ -61,6 +61,11 @@
             overflow-x: hidden;
         }
 
+        /* Print Only Header */
+        .print-header {
+            display: none;
+        }
+
         /* Animated Background */
         .animated-bg {
             position: fixed;
@@ -929,23 +934,54 @@
 
         /* Print Styles */
         @media print {
+            @page {
+                margin: 2cm;
+                size: A4;
+            }
 
             .nav-container,
             .mobile-menu-btn,
             .cta-buttons,
             .contact-links,
             .animated-bg,
-            footer {
+            footer,
+            #navbar,
+            .hero-description,
+            .btn {
                 display: none !important;
+            }
+
+            .print-header {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid #333;
+            }
+
+            .print-header h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+                color: #000;
+            }
+
+            .print-contact {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                font-size: 0.9rem;
+                color: #444;
             }
 
             body {
                 background: white !important;
                 color: black !important;
+                font-size: 10pt;
             }
 
             section {
-                padding: 2rem 1rem !important;
+                padding: 1rem 0 !important;
+                margin-bottom: 1.5rem;
                 page-break-inside: avoid;
             }
 
@@ -954,36 +990,82 @@
                 background: none !important;
                 -webkit-text-fill-color: initial !important;
                 margin-bottom: 1rem !important;
+                text-align: left !important;
+                font-size: 1.5rem !important;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 0.3rem;
+            }
+
+            .about-content,
+            .skills-grid,
+            .projects-grid,
+            .cert-grid {
+                display: block !important;
+            }
+
+            .stat-card,
+            .skill-category,
+            .project-card,
+            .cert-card {
+                margin-bottom: 1rem;
+                break-inside: avoid;
+                border: 1px solid #eee !important;
+                padding: 1rem !important;
+                background: white !important;
             }
 
             .skill-badge {
-                border: 1px solid #ccc !important;
-                background: #f9f9f9 !important;
-                color: black !important;
-                box-shadow: none !important;
+                display: inline-block !important;
+                border: 1px solid #ddd !important;
+                background: #f5f5f5 !important;
+                padding: 0.3rem 0.6rem !important;
+                margin: 0.2rem !important;
+                font-size: 0.85rem !important;
+                color: #333 !important;
             }
 
-            .timeline-content,
-            .project-card,
-            .cert-card,
-            .stat-card {
-                border: 1px solid #eee !important;
+            .timeline-item {
+                display: block !important;
+                padding-left: 0 !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .timeline::before,
+            .timeline-dot {
+                display: none !important;
+            }
+
+            .timeline-content {
                 background: white !important;
-                color: black !important;
-                box-shadow: none !important;
-                backdrop-filter: none !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+
+            .timeline-title {
+                font-size: 1.2rem !important;
+                margin-bottom: 0.2rem !important;
             }
 
             .stat-number {
                 background: none !important;
                 -webkit-text-fill-color: initial !important;
                 color: #4f46e5 !important;
+                font-size: 1.5rem !important;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Print Only Header -->
+    <div class="print-header">
+        <h1>Dikshant Patel</h1>
+        <div class="print-contact">
+            <span>📧 dikshant1912@gmail.com</span>
+            <span>📞 +91 8141624738</span>
+            <span>🔗 linkedin.com/in/dikshant-patel-536352295</span>
+        </div>
+    </div>
     <!-- Animated Background -->
     <div class="animated-bg"></div>
 
